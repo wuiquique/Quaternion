@@ -19,6 +19,7 @@ jobs:
         os: [ ubuntu-18.04 ]
         compiler: [ GCC, Clang ]
         linkage: [ static, dynamic ]
+        all-in-one: [ '' ]
         qt-version: [ '5.9' ]
         exclude:
         - linkage: dynamic # Only build all-in-one in static configuration
