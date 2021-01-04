@@ -16,17 +16,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04, macos-10.15]
+        os: [ ubuntu-18.04 ]
         compiler: [ GCC, Clang ]
         linkage: [ static, dynamic ]
         all-in-one: [ '', 'all-in-one' ]
         exclude:
-        - os: macos-10.15
-          compiler: GCC
-        - os: macos-10.15
-          linkage: dynamic
         - linkage: dynamic # Only build all-in-one in static configuration
           all-in-one: 'all-in-one'
+        include: 
+        - os: macos-10.15
+          compiler: Clang
+          linkage: static
+          all-in-one: all-in-one
 
     env:
       BUILD_SHARED_LIBS: ${{ matrix.dynamic }}
@@ -108,8 +109,8 @@ jobs:
       if: contains(matrix.os, 'macos')
       run: cmake --build build --target image
 
-    - name: Make AppImage (Linux, all-in-one)
-      if: contains(matrix.os, 'ubuntu') && matrix.all-in-one != ''
+    - name: Make AppImage (Linux/Clang, all-in-one)
+      if: contains(matrix.os, 'ubuntu') && matrix.compiler == 'Clang' && matrix.all-in-one != ''
       env:
         QML_SOURCES_PATHS: ${{ github.workspace }}/client/qml
       run: |
