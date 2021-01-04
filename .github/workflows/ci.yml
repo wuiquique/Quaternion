@@ -99,7 +99,7 @@ jobs:
     - name: Build Quaternion
       run: cmake --build build --target quaternion
 
-    - name: Validate and install Quaternion (Linux)
+    - name: Install and validate Quaternion (Linux)
       if: ${{ contains(matrix.os, 'ubuntu') }}
       run: |
         cmake --build build --target install
@@ -119,4 +119,4 @@ jobs:
           wget -c -nv https://github.com/linuxdeploy/$f/releases/download/continuous/$f-x86_64.AppImage
           chmod +x $f-x86_64.AppImage
         done
-        ./linuxdeploy-x86_64.AppImage --appdir $DESTDIR --plugin qt --output AppImage
+        LD_LIBRARY_PATH=$QT5_DIR/lib QMAKE=$QT5_DIR/bin/qmake ./linuxdeploy-x86_64.AppImage --appdir $DESTDIR --plugin qt --output AppImage
