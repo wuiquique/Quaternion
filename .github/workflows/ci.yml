@@ -58,7 +58,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ runner.workspace }}/Qt
-        key: ${{ runner.os }}-QtCache
+        key: ${{ runner.os }}-Qt${{ matrix.qt-version }}-cache
 
     - name: Install Qt (Linux)
       if: ${{ !contains(matrix.os, 'macos') }}
