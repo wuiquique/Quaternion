@@ -18,27 +18,27 @@ jobs:
       matrix:
         os: [ ubuntu-18.04 ]
         compiler: [ GCC, Clang ]
-        composition: [ static, dynamic ]
-        qt-version: [ '5.9.9' ]
         distribute: [ '' ]
+        qt-version: [ '5.9.9' ]
+        composition: [ static, dynamic ]
         exclude:
         - compiler: Clang
           composition: static # Replace with all-in-one (see below)
         include:
         - os: ubuntu-18.04
           compiler: Clang
+          qt-version: '5.14.2'
           composition: all-in-one
-          qt-version: '5.9.9'
         - os: ubuntu-18.04
           compiler: Clang
-          composition: all-in-one
-          qt-version: '5.14.2'
           distribute: appimage
+          qt-version: '5.9.9'
+          composition: all-in-one
         - os: macos-10.15
           compiler: Clang
-          composition: all-in-one
-          qt-version: '5.14.2'
           distribute: dmg
+          qt-version: '5.14.2'
+          composition: all-in-one
 
     env:
       BUILD_SHARED_LIBS: ${{ matrix.composition == 'dynamic' }}
