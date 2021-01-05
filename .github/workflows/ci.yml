@@ -21,6 +21,7 @@ jobs:
         linkage: [ static, dynamic ]
         all-in-one: [ '' ]
         qt-version: [ '5.9' ]
+        distribute: [ '' ]
         exclude:
         - linkage: dynamic # Only build all-in-one in static configuration
           all-in-one: 'all-in-one'
