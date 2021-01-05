@@ -50,7 +50,6 @@ jobs:
         submodules: ${{ matrix.composition == 'all-in-one' }}
 
     - name: Cache Qt
-#       if: ${{ !contains(matrix.os, 'macos') }}
       id: cache-qt
       uses: actions/cache@v2
       with:
@@ -58,7 +57,6 @@ jobs:
         key: ${{ runner.os }}-Qt${{ matrix.qt-version }}-cache
 
     - name: Install Qt
-#      if: ${{ !contains(matrix.os, 'macos') }}
       uses: jurplel/install-qt-action@v2.11.1
       with:
         version: ${{ matrix.qt-version }}
@@ -89,7 +87,6 @@ jobs:
         cmake -E make_directory ${{ runner.workspace }}/build
 
     - name: Get, build and install QtKeychain
-#       if: contains(matrix.os, 'ubuntu')
       run: |
         git clone --depth=1 -b v0.12.0 https://github.com/frankosterfeld/qtkeychain
         cd qtkeychain
