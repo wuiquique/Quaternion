@@ -20,7 +20,7 @@ jobs:
         compiler: [ GCC, Clang ]
         linkage: [ static, dynamic ]
         all-in-one: [ '' ]
-        qt-version: [ '5.9' ]
+        qt-version: [ '5.9.9' ]
         distribute: [ '' ]
         exclude:
         - linkage: dynamic # Only build all-in-one in static configuration
@@ -30,12 +30,12 @@ jobs:
           compiler: Clang
           linkage: static
           all-in-one: all-in-one
-          qt-version: '5.9'
+          qt-version: '5.9.9'
         - os: ubuntu-18.04
           compiler: Clang
           linkage: static
           all-in-one: all-in-one
-          qt-version: '5.14'
+          qt-version: '5.14.2'
           distribute: appimage
         - os: macos-10.15
           compiler: Clang
