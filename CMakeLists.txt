@@ -219,7 +219,7 @@ if(APPLE)
 endif(APPLE)
 
 # Windows, this is a GUI executable; OSX, make a bundle
-add_executable(${PROJECT_NAME} WIN32 MACOSX_BUNDLE
+add_executable(${PROJECT_NAME} MACOSX_BUNDLE
     ${quaternion_SRCS} ${quaternion_QRC_SRC} ${quaternion_QM}
     ${quaternion_WINRC} ${${PROJECT_NAME}_MAC_ICON})
 
