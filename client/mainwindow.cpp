@@ -19,6 +19,8 @@
 
 #include "mainwindow.h"
 
+#include <iostream>
+
 #include "roomlistdock.h"
 #include "userlistdock.h"
 #include "chatroomwidget.h"
@@ -73,6 +75,17 @@ using Quotient::NetworkAccessManager;
 using Quotient::Settings;
 using Quotient::AccountSettings;
 using Quotient::Uri;
+
+void MainWindow::resizeEvent(QResizeEvent *newSize) 
+{
+    // LABORATORIO 2
+    std::cout << "Se cambio el tamaño de la ventana \n";
+
+    //LABORATORIO 3
+    int width = newSize->size().width();
+    int height = newSize->size().height();
+    int area = width * height; 
+}
 
 MainWindow::MainWindow()
 {
