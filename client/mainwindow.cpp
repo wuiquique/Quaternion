@@ -85,6 +85,10 @@ void MainWindow::resizeEvent(QResizeEvent *newSize)
     int width = newSize->size().width();
     int height = newSize->size().height();
     int area = width * height; 
+    
+    if() {
+        
+    }
 }
 
 MainWindow::MainWindow()
