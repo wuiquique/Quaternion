@@ -79,11 +79,11 @@ using Quotient::Uri;
 void MainWindow::resizeEvent(QResizeEvent *newSize) 
 {
     // LABORATORIO 2
-    std::cout << "Se cambio el tamaño de la ventana \n";
-
-    //LABORATORIO 3
     int width = newSize->size().width();
     int height = newSize->size().height();
+    std::cout << "Se ha cambiado el tamano de la ventana. El nuevo ancho es: " << width << ", y el nuevo alto es: " << height << "\n";
+
+    //LABORATORIO 3
     int area = width * height; 
     
     if() {
