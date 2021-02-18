@@ -651,17 +651,6 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 void ChatRoomWidget::sendInput()
 {
 
-    //TAREA
-    size_t length = miTexto.size();
-    while(length > 0) {
-        int x = length - 1;
-        length--;
-
-        char c = miTexto[x];
-        std::cout << "Caracter " << x << " : " << c << "\n";
-    }
-
-
     if (!attachedFileName.isEmpty())
         sendFile();
     else {
