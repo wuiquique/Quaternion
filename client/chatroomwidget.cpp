@@ -651,6 +651,91 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 void ChatRoomWidget::sendInput()
 {
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------
+    //Laboratorio 4
+    
+    //VOCALES
+    std::string miTexto = m_chatEdit->toPlainText().toStdString(); //variable que almacena el texto que se manda en el chat
+
+    size_t qq = miTexto.size(); //qq es el largo del texto
+    char* copia = new char[qq]; //se crea una array con el texto
+    copia[qq] = '\0'; //Se le da cero como valor inicial
+
+
+    int vocales = 0;
+
+        for (int i = 0; miTexto[i]!='\0'; i++) {
+            char letraA = tolower(miTexto[i]); //letras en minuscula
+            if (
+                letraA == 'a' ||
+                letraA == 'e' ||
+                letraA == 'i' ||
+                letraA == 'o' ||
+                letraA == 'u'
+            ) {
+                vocales++;
+            }
+        }
+
+    std::cout << "\nHay un total de " << vocales << " vocal/es.\n";
+
+    //PALINDROMO
+    for (int i = 0; i < qq; i++) {
+        copia[i] = miTexto[i];
+    }
+
+    strrev(copia); //le da la vuelta a la palabra
+    if (copia == miTexto) { //comprueba igualdad
+    std::cout << "La palabra es un palindromo\n";
+    }
+    delete[] copia; //borrar copia y liberar el espacio en memoria que ocupa
+
+    //NUMERO DE PALABRAS
+    int palabras = 0;
+
+        for (int i = 1;  i < qq ; i++) { //encontrar el espacio
+        
+        if (miTexto[i - 1] == ' ' && isalpha(miTexto[i])) { //isalpha, valor alfabetico 
+            palabras++;}    
+        }
+        if (isalpha(miTexto[0])) {palabras++;} //detectar que lo primero es una palabra
+
+    std::cout << "La cantidad de palabras en el mensaje es: " << palabras << "\n";
+
+    //CANTIDAD DE HOLAS
+    int hola = 0;
+        for (int i = 0; i < qq; i++){
+
+        char h = tolower(miTexto[i-3]);
+        char o = tolower(miTexto[i-2]);
+        char l = tolower(miTexto[i-1]);
+        char a = tolower(miTexto[i]);
+        if (
+            h == 'h' && 
+            o == 'o' && 
+            l == 'l' && 
+            a == 'a'
+            
+            )
+        {
+            hola++;
+        }
+        }
+
+    std::cout << "La cantidad de palabras 'hola' es de: " << hola <<"\n";
+
+    //NUMEROS
+    int numeros = 0;
+        for (int i = 0;  i < qq  ; i++) {
+        
+        if (isdigit(miTexto[i])) {
+            numeros++;}    
+        }
+
+    std::cout << "La cantidad de numeros en el texto es de: " << numeros << "\n\n";
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------
+
     if (!attachedFileName.isEmpty())
         sendFile();
     else {
