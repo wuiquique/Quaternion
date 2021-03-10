@@ -76,24 +76,6 @@ using Quotient::Settings;
 using Quotient::AccountSettings;
 using Quotient::Uri;
 
-void MainWindow::resizeEvent(QResizeEvent *newSize) 
-{
-    // LABORATORIO 2
-    int width = newSize->size().width();
-    int height = newSize->size().height();
-    // std::cout << "Se ha cambiado el tamano de la ventana. El nuevo ancho es: " << width << ", y el nuevo alto es: " << height << "\n";
-
-    //LABORATORIO 3
-    int area = width * height; 
-    int widthVieja = newSize->oldSize().width();
-    int heightVieja = newSize->oldSize().height();
-    int areaVieja = widthVieja * heightVieja;
-    
-    if( area - areaVieja >= 400 || area - areaVieja <= -400 ) {
-        std::cout << "El area de la ventana a aumentado mas de 400 pixeles. El area nueva es de: " << area << ". Y el area vieja es de: " << areaVieja << "\n";
-    }
-}
-
 MainWindow::MainWindow()
 {
     Connection::setRoomType<QuaternionRoom>();
