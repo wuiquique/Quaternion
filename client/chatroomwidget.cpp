@@ -653,62 +653,7 @@ QString ChatRoomWidget::sendCommand(const QStringRef& command,
 
 void ChatRoomWidget::sendInput()
 {
-    //---------------------------------------------------------------------------------
-    //Lab 5
-    //Ejercicio 1
-
-    std::string miTexto = m_chatEdit->toPlainText().toStdString();
-    size_t qq = miTexto.size();
-
     
-
-        for (int i = 1;  i < qq ; i++) { 
-            if (miTexto[i - 1] == ' ' && isalpha(miTexto[i])) { 
-                palabras++;}    
-        }
-
-        if (isalpha(miTexto[0])) {palabras++;} 
-
-    std::cout << "La cantidad de palabras que se han enviado es: " << palabras << "\n";
-
-    //Ejercicio 2
-    
-    _mensajes_enviados++;
-
-    if ( _mensajes_enviados  > 10) {
-        msgs.erase(msgs.begin());
-        msgs.push_back(miTexto);
-    }
-
-    else {
-        msgs.push_back(miTexto);
-    }
-
-    int numero = 1;
-    for (std::string mensaje: msgs) {
-        std::cout << numero << " -> " << mensaje << "\n";
-        numero++;
-    }
-    std::cout << "La cantidad de mensajes enviados es: " << _mensajes_enviados << "\n";
-    //----------------------------------------------------------------------------------
-
-    /*
-    std::string miTexto = m_chatEdit->toPlainText().toStdString();
-    size_t qq = miTexto.size();
-
-    char* copiaFor = new char [qq + 1];
-    copiaFor[qq] = '\0';
-    // Donde '\0' es un caracter vacio que normalmente se coloca al final de cualquier array.
-
-    int p = 0;
-
-    for(int i = qq - 1; i >= 0; i--) { 
-	    char n = miTexto[i];
-        copiaFor[p] = miTexto[i];
-        std::cout << "Caracter " << p << ": " << n << "\n";
-        p++;
-    }
-    */
 
     if (!attachedFileName.isEmpty())
         sendFile();
